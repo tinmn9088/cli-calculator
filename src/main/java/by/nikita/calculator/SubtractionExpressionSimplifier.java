@@ -4,7 +4,7 @@ import java.util.regex.Pattern;
 
 final class SubtractionExpressionSimplifier extends AbstractArithmeticExpressionSimplifier {
 
-    private final static Pattern EXPRESSION_PATTERN = Pattern.compile("(\\d+)\\s*-\\s*(\\d+)");
+    private final static Pattern EXPRESSION_PATTERN = Pattern.compile("(?<left>\\d+(\\.\\d+)?)\\s*-\\s*(?<right>\\d+(\\.\\d+)?)");
 
     public SubtractionExpressionSimplifier() throws NullPointerException, IllegalArgumentException {
         super(EXPRESSION_PATTERN);

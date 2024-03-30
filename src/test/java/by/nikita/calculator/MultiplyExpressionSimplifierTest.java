@@ -8,8 +8,8 @@ class MultiplyExpressionSimplifierTest {
 
     @Test
     void applyShouldSimplifyExpressionWithTwoOperands() {
-        final String expression = " 2 *  2 ";
-        final String expected = "4";
+        final String expression = " 2 *  2.5 ";
+        final String expected = "5";
         MultiplyExpressionSimplifier simplifier = new MultiplyExpressionSimplifier();
 
         String actual = simplifier.apply(expression);
