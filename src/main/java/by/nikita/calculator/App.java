@@ -13,7 +13,11 @@ public class App {
     private final static Pattern NUMBER_PATTERN = Pattern.compile("-?\\d+(\\.\\d+)?");
 
     public static void main(String[] args) {
-        Collection<ArithmeticExpressionSimplifier> simplifiers = List.of(new SumExpressionSimplifier(), new SubtractionExpressionSimplifier(), new MultiplyExpressionSimplifier(), new DivideExpressionSimplifier());
+        Collection<ArithmeticExpressionSimplifier> simplifiers = List.of(
+                new MultiplyExpressionSimplifier(),
+                new DivideExpressionSimplifier(),
+                new SumExpressionSimplifier(),
+                new SubtractionExpressionSimplifier());
 
         Scanner userInput = new Scanner(System.in);
         String expression;
@@ -25,7 +29,7 @@ public class App {
             try {
                 System.out.printf("Answer: %s\n", simplify(expression, simplifiers));
             } catch (IllegalArgumentException ex) {
-                System.err.printf("Error: %s\n", ex.getMessage());
+                System.out.printf("Error: %s\n", ex.getMessage());
             }
         } while (!expression.equals(":q"));
     }
