@@ -22,16 +22,20 @@ public class App {
         Scanner userInput = new Scanner(System.in);
         String expression;
 
-        do {
+        while (true) {
             System.out.print("Input >>> ");
             expression = userInput.nextLine();
+
+            if (expression.equals(":q")) {
+                break;
+            }
 
             try {
                 System.out.printf("Answer: %s\n", simplify(expression, simplifiers));
             } catch (IllegalArgumentException ex) {
                 System.out.printf("Error: %s\n", ex.getMessage());
             }
-        } while (!expression.equals(":q"));
+        }
     }
 
     static String simplify(String expression, Collection<ArithmeticExpressionSimplifier> simplifiers) throws IllegalArgumentException {
@@ -52,7 +56,7 @@ public class App {
         } while (wasSimplified);
 
         if (!NUMBER_PATTERN.matcher(expression).matches()) {
-            throw new IllegalArgumentException(String.format("Invalid expression: '%s'", expression));
+            throw new IllegalArgumentException(String.format("Failed to solve expression: '%s'", expression));
         }
 
         return expression;
